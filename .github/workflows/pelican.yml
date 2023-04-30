@@ -1,0 +1,25 @@
+name: Deploy
+
+on:
+  # Trigger the workflow on push on main branch,
+  push:
+    branches:
+      - main
+
+jobs:
+  build-pelican:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+      with: 
+        submodules: 'true'
+    # - uses: rehanhaider/pelican-to-github-pages@v1.0.3
+    #   env:
+    #     GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+    #     GH_PAGES_CNAME: ${{secrets.DOMAIN_CNAME}}
+        # PELICAN_CONFIG_FILE: <override "publishconf.py">
+        # PELICAN_CONTENT_FOLDER: <override content/>
+
+# Then, setup a secrets in your repository named DOMAIN_CNAME that should contain the URL of your
+# custom domain without the protocol, e.g. example.com. This is only required if you have a custom
+# domain, if you want to use the *.github.io subdomain, then you don't need this.
