@@ -1,0 +1,19 @@
+name: deploy
+
+on:
+  # trigger the workflow on push on main branch,
+  push:
+    branches:
+      - main
+
+jobs:
+  build_roy:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+      with: 
+        submodules: 'true'
+    - uses: rmathew8-gh/Pelican.Blog.git@master
+      env:
+        github_token: ${{secrets.github_token}}
+        gh_pages_cname: ${{secrets.domain_cname}}
