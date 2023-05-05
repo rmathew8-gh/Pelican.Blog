@@ -9,8 +9,12 @@ jobs:
     build-x1:
         runs-on: ubuntu-latest
 
-        permissions:
-          contents: write
+        # permissions:
+        #   contents: write
+        #   # pull-requests: write
+        #   # issues: write
+        #   # repository-projects: write
+
 
         steps:
           - name: full checkout
