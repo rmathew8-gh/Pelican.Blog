@@ -21,14 +21,28 @@ jobs:
           - name: Create a Release
             env:
               GITHUB_TOKEN: ${{ github.token }}
+              # GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+              # GH_PAGES_CNAME: ${{secrets.DOMAIN_CNAME}}
+
+              # Pass as an argument to an Action.
+              # with:
+              #   ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+
             run: |
               # pip install invoke pelican[markdown]
               pip install -r requirements.txt
               env > /tmp/x.env
               pelican content -s publishconf.py
+
               git branch -av
+              git remote -v
+
               ghp-import output -r . -p -m "abc roy"
               echo $GITHUB_TOKEN | sed -e 's/./& /g'
+
+              git remote add origin2 https://$GITHUB_TOKEN@github.com/rmathew8-gh/Pelican.Blog.git
+              git push origin2 gh-pages
+
               echo "done and done"
               # git push origin gh-pages
 
