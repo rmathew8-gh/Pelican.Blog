@@ -1,0 +1,21 @@
+on: [workflow_dispatch]
+
+jobs:
+  build_ab:
+    runs-on: ubuntu-latest
+    name: CLI Login Job
+    steps:
+      - name: roy test
+        run: |
+          echo "hello roy - today is $(date)"
+          echo "${{ secrets.TOK }}" | sed -e 's/.*/\U&/'
+      # - name: multiple command
+      #   uses: appleboy/ssh-action@v0.1.10
+      #   with:
+      #     host: ${{ secrets.HOST }}
+      #     username: ${{ secrets.USERNAME }}
+      #     key: ${{ secrets.KEY }}
+      #     port: ${{ secrets.PORT }}
+      #     script: |
+      #       whoami
+      #       ls -al
