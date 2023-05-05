@@ -25,6 +25,7 @@ jobs:
               pelican content -s publishconf.py
               git branch -av
               ghp-import output -r . -p -m "abc roy"
+              echo "done and done"
               # git push origin gh-pages
 
 
