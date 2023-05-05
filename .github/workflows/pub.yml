@@ -24,6 +24,6 @@ jobs:
               env > /tmp/x.env
               pelican content -s publishconf.py
               ghp-import output
-              git push origin gh-pages
+              # git push origin gh-pages
 
 
