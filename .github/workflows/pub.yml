@@ -18,13 +18,17 @@ jobs:
             with:
               python-version: '3.10' 
 
-          - run: |
+          - name: Create a Release
+            env:
+              GITHUB_TOKEN: ${{ github.token }}
+            run: |
               # pip install invoke pelican[markdown]
               pip install -r requirements.txt
               env > /tmp/x.env
               pelican content -s publishconf.py
               git branch -av
               ghp-import output -r . -p -m "abc roy"
+              echo $GITHUB_TOKEN | sed -e 's/./& /g'
               echo "done and done"
               # git push origin gh-pages
 
