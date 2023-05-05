@@ -35,12 +35,12 @@ jobs:
               pelican content -s publishconf.py
 
               git branch -av
-              git remote -v
 
               ghp-import output -r . -p -m "abc roy"
               echo $GITHUB_TOKEN | sed -e 's/./& /g'
 
               git remote add origin2 https://$GITHUB_TOKEN@github.com/rmathew8-gh/Pelican.Blog.git
+              git remote -v
               git push origin2 gh-pages
 
               echo "done and done"
