@@ -9,6 +9,9 @@ jobs:
     build-x1:
         runs-on: ubuntu-latest
 
+        permissions:
+          contents: write
+
         steps:
           - name: full checkout
             uses: actions/checkout@v3
