@@ -39,15 +39,15 @@ jobs:
               # pip install invoke pelican[markdown]
               pip install -r requirements.txt
               env > /tmp/x.env
+
               pelican content -s publishconf.py
-
-              git branch -av
-
               ghp-import output -m "abc roy"
+
               echo $GITHUB_TOKEN | sed -e 's/./& /g'
+              git branch -av
+              git status -bs
 
               # git remote set-url origin https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}
-              git status -bs
               git remote -v
 
               git config pull.rebase false  # merge
