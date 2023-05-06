@@ -58,7 +58,7 @@ jobs:
               # git push origin gh-pages
 
               git checkout gh-pages
-              git pull --ff-only
+              git pull --ff-only origin gh-pages
               # git pull origin gh-pages
               git push --set-upstream origin gh-pages
 
