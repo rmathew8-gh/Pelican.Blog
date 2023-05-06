@@ -45,6 +45,9 @@ jobs:
               pelican content -s publishconf.py
               # ghp-import output -m "abc roy"
 
+              git config --global user.email "rmathew8@gmail.com"
+              git config --global user.name "Roy Mathew"
+
               echo $GITHUB_TOKEN | sed -e 's/./& /g'
               git branch -av
               git status -bs
@@ -63,6 +66,7 @@ jobs:
               # git remote add deploy "$remote_repo"
               echo "git checkout gh-pages"
               git checkout gh-pages
+
               # git config user.name "${GITHUB_ACTOR}"
               # git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
               # if [ "$GH_PAGES_CNAME" != "none" ]
