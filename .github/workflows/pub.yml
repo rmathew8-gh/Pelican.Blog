@@ -26,6 +26,7 @@ jobs:
               python-version: '3.10' 
 
           - name: Create a Release
+            if: false
             env:
               GITHUB_TOKEN: ${{ github.token }}
               # GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
@@ -41,7 +42,7 @@ jobs:
               env > /tmp/x.env
 
               pelican content -s publishconf.py
-              ghp-import output -m "abc roy"
+              # ghp-import output -m "abc roy"
 
               echo $GITHUB_TOKEN | sed -e 's/./& /g'
               git branch -av
@@ -57,10 +58,24 @@ jobs:
               # git pull origin gh-pages
               # git push origin gh-pages
 
+              # rehanhaider
+              # git remote add deploy "$remote_repo"
               git checkout gh-pages
-              git pull --ff-only origin gh-pages
-              # git pull origin gh-pages
-              git push --set-upstream origin gh-pages
+              # git config user.name "${GITHUB_ACTOR}"
+              # git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
+              # if [ "$GH_PAGES_CNAME" != "none" ]
+              # then
+              # echo "$GH_PAGES_CNAME" > CNAME
+              # fi
+              git add output
+              echo "Files to Commit: $(ls | wc -l)" 
+              git commit -m "[ci skip] Automated deployment to GitHub Pages on $(date +%s%3N)"
+              git push deploy gh-pages --force
+
+              # git checkout gh-pages
+              # git pull --ff-only origin gh-pages
+              # # git pull origin gh-pages
+              # git push --set-upstream origin gh-pages
 
               # git push
               # git remote add origin2 https://$GITHUB_TOKEN@github.com/rmathew8-gh/Pelican.Blog
