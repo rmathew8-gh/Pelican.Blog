@@ -59,6 +59,7 @@ jobs:
 
               # rehanhaider
               # git remote add deploy "$remote_repo"
+              echo "git checkout gh-pages"
               git checkout gh-pages
               # git config user.name "${GITHUB_ACTOR}"
               # git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
