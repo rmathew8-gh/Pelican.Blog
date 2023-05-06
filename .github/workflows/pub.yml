@@ -48,9 +48,12 @@ jobs:
 
               # git remote set-url origin https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}
               git remote -v
+
+              git config pull.ff only
               git pull
               git pull origin gh-pages
               git push origin gh-pages
+
               # git push
               # git remote add origin2 https://$GITHUB_TOKEN@github.com/rmathew8-gh/Pelican.Blog
               # git push origin2 gh-pages
