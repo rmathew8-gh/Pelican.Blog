@@ -47,9 +47,12 @@ jobs:
               echo $GITHUB_TOKEN | sed -e 's/./& /g'
 
               # git remote set-url origin https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}
+              git status -bs
               git remote -v
 
-              git config pull.ff only
+              git config pull.rebase false  # merge
+              # git config pull.ff only
+
               git pull
               git pull origin gh-pages
               git push origin gh-pages
@@ -60,5 +63,3 @@ jobs:
 
               echo "done and done"
               # git push origin gh-pages
-
-
