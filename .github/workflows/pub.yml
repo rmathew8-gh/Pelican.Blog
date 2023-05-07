@@ -28,15 +28,6 @@ jobs:
               python-version: '3.10' 
 
           - name: Create a Release
-            env:
-              GITHUB_TOKEN: ${{ github.token }}
-              # GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
-              # GH_PAGES_CNAME: ${{secrets.DOMAIN_CNAME}}
-
-              # Pass as an argument to an Action.
-              # with:
-              #   ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-
             run: |
               pip install -r requirements.txt
               env > /tmp/x.env
@@ -45,13 +36,13 @@ jobs:
               git config --global user.name "Roy Mathew"
 
               pelican content -s publishconf.py
-              ghp-import output -n -m "Sunday 11:17 am"
+              ghp-import output -p -n -m "Sunday 11:17 am"
 
-              echo "git checkout gh-pages"
-              git checkout gh-pages
+              # echo "git checkout gh-pages"
+              # git checkout gh-pages
 
-              git add output
-              git commit -m "[ci skip] Automated deployment to GitHub Pages on $(date +%s%3N)"
-              git push --force origin gh-pages
+              # git add output
+              # git commit -m "[ci skip] Automated deployment to GitHub Pages on $(date +%s%3N)"
+              # git push --force origin gh-pages
 
               echo "done and done"
