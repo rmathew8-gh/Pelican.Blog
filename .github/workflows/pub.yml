@@ -38,54 +38,20 @@ jobs:
               #   ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
 
             run: |
-              # pip install invoke pelican[markdown]
               pip install -r requirements.txt
               env > /tmp/x.env
-
-              pelican content -s publishconf.py
-              ghp-import output -n -m "Sunday 10:32 am"
 
               git config --global user.email "rmathew8@gmail.com"
               git config --global user.name "Roy Mathew"
 
-              echo $GITHUB_TOKEN | sed -e 's/./& /g'
-              git branch -av
-              git status -bs
+              pelican content -s publishconf.py
+              ghp-import output -n -m "Sunday 11:17 am"
 
-              # git remote set-url origin https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}
-              git remote -v
-
-              # git config pull.rebase false  # merge
-              # # git config pull.ff only
-
-              # git pull
-              # git pull origin gh-pages
-              # git push origin gh-pages
-
-              # rehanhaider
-              # git remote add deploy "$remote_repo"
               echo "git checkout gh-pages"
               git checkout gh-pages
 
-              # git config user.name "${GITHUB_ACTOR}"
-              # git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
-              # if [ "$GH_PAGES_CNAME" != "none" ]
-              # then
-              # echo "$GH_PAGES_CNAME" > CNAME
-              # fi
-              git add output
-              echo "Files to Commit: $(ls | wc -l)" 
+              # git add output
               git commit -m "[ci skip] Automated deployment to GitHub Pages on $(date +%s%3N)"
               git push --force origin gh-pages
 
-              # git checkout gh-pages
-              # git pull --ff-only origin gh-pages
-              # # git pull origin gh-pages
-              # git push --set-upstream origin gh-pages
-
-              # git push
-              # git remote add origin2 https://$GITHUB_TOKEN@github.com/rmathew8-gh/Pelican.Blog
-              # git push origin2 gh-pages
-
               echo "done and done"
-              # git push origin gh-pages
