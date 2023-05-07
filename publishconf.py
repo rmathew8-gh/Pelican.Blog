@@ -9,7 +9,7 @@ from pelicanconf import *
 
 # If your site is available via HTTPS, make sure SITEURL begins with https://
 # SITEURL = 'https://anoobe.com'
-SITEURL = 'https://rmathew8-gh.github.io/Pelican.blog'
+SITEURL = 'https://rmathew8-gh.github.io/Pelican.Blog'
 RELATIVE_URLS = False
 
 FEED_ALL_ATOM = 'feeds/all.atom.xml'
