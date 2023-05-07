@@ -76,7 +76,7 @@ jobs:
               git add output
               echo "Files to Commit: $(ls | wc -l)" 
               git commit -m "[ci skip] Automated deployment to GitHub Pages on $(date +%s%3N)"
-              # git push --force origin gh-pages
+              git push --force origin gh-pages
 
               # git checkout gh-pages
               # git pull --ff-only origin gh-pages
