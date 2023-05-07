@@ -30,19 +30,9 @@ jobs:
           - name: Create a Release
             run: |
               pip install -r requirements.txt
-              env > /tmp/x.env
 
               git config --global user.email "rmathew8@gmail.com"
               git config --global user.name "Roy Mathew"
 
               pelican content -s publishconf.py
               ghp-import output -p -n -m "Sunday 11:17 am"
-
-              # echo "git checkout gh-pages"
-              # git checkout gh-pages
-
-              # git add output
-              # git commit -m "[ci skip] Automated deployment to GitHub Pages on $(date +%s%3N)"
-              # git push --force origin gh-pages
-
-              echo "done and done"
