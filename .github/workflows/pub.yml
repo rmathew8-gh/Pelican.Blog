@@ -43,7 +43,7 @@ jobs:
               env > /tmp/x.env
 
               pelican content -s publishconf.py
-              ghp-import output -m "abc roy"
+              ghp-import output -n -m "Sunday 10:32 am"
 
               git config --global user.email "rmathew8@gmail.com"
               git config --global user.name "Roy Mathew"
